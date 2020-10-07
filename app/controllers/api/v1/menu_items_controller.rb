@@ -1,6 +1,6 @@
-class Api::V1::MenusController < Api::V1::BaseController
+class Api::V1::MenuItemsController < Api::V1::BaseController
   def index
-    dishes = policy_scope(MenuItems)
+    dishes = policy_scope(MenuItem)
     render json: dishes
   end
 end
