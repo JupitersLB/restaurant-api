@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Cleaning database"
-Menu.delete_all
+Menu.destroy_all
 User.delete_all
 MenuItem.delete_all
 puts "Cleaned"
@@ -145,4 +145,7 @@ menu_item = MenuItem.new(params)
 menu_item.menu = menu
 menu_item.save
 puts "Created menu item #{menu_item.id}"
+
+puts "Menu Items created!"
+
 
