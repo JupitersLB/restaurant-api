@@ -38,3 +38,13 @@ puts "Created user #{new_user.id}"
 
 puts "Users created!"
 
+puts "Creating menu"
+menu = Menu.new(name: "Standard")
+menu.save
+puts "Created menu #{menu.id}"
+
+put "Menus created!"
+
+
+
+
