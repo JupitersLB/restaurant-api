@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :menus, only: :show do
         resources :menu_items, only: :index
       end
+      resources :orders, only: [:index, :show, :create, :update]
     end
   end
 end
