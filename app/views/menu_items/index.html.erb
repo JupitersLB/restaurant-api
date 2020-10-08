@@ -1,1 +1,7 @@
-index.html.erb
+<h3>menu items</h3>
+<% @menu_items.each do |item| %>
+  <p><%= item.name %></p>
+  <p><%= item.description %></p>
+  <p><%= item.category %></p>
+  <p><%= item.price %></p>
+<% end %>
