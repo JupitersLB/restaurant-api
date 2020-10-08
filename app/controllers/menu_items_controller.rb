@@ -25,6 +25,12 @@ class MenuItemsController < ApplicationController
   def edit; end
 
   def update
+    @menu_item.update(menu_item_params)
+    if @menu_item.save
+      redirect_to menu_item_path(@menu_item)
+    else
+      render :edit
+    end
   end
 
   private
