@@ -1,11 +1,13 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [:show, :edit, :update]
+  before_action :set_menu, only: [ :edit, :update]
 
   def index
     @menu = Menu.all
   end
 
-  def show; end
+  def show
+     @menu = Menu.find(params[:id])
+  end
 
   def new
     @menu = Menu.new()
