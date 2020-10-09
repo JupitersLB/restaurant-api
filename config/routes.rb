@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :menus, only: :show do
         resources :menu_items, only: :index
       end
-      resources :orders, only: [:index, :show, :create] do
+      resources :orders, only: [:index, :show, :update] do
         resources :order_items, only: :create
       end
     end
@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     resources :menu_items, only: :create
   end
 
+  resources :orders, only: [ :new, :create ]
+
   resources :menu_items, except: [ :destroy, :create ]
 
   resources :orders, only: [ :index, :show ]
+
 end

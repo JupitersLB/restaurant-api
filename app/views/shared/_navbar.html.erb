@@ -15,9 +15,11 @@
     </div>
 
     <div class="app-nav text-center">
-      <div class="new-customer shadow offset-3 col-6">
-        <i class="fas fa-user-friends"></i>
-      </div>
+      <%= link_to new_order_path do %>
+        <div class="new-customer shadow offset-3 col-6">
+          <i class="fas fa-user-friends"></i>
+        </div>
+      <% end %>
       <%= link_to orders_path do %>
         <div class="orders mt-3 shadow offset-3 col-6">
           <i class="fas fa-concierge-bell"></i>
