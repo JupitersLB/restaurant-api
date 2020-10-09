@@ -18,15 +18,21 @@
       <div class="new-customer shadow offset-3 col-6">
         <i class="fas fa-user-friends"></i>
       </div>
-      <div class="orders mt-3 shadow offset-3 col-6">
-        <i class="fas fa-concierge-bell"></i>
-      </div>
-      <div class="menus mt-3 shadow offset-3 col-6">
-        <i class="fas fa-clipboard-list"></i>
-      </div>
-      <div class="menu-items mt-3 shadow offset-3 col-6">
-        <i class="fas fa-hamburger"></i>
-      </div>
+      <%= link_to orders_path do %>
+        <div class="orders mt-3 shadow offset-3 col-6">
+          <i class="fas fa-concierge-bell"></i>
+        </div>
+      <% end %>
+      <%= link_to menus_path do %>
+        <div class="menus mt-3 shadow offset-3 col-6">
+          <i class="fas fa-clipboard-list"></i>
+        </div>
+      <% end %>
+      <%= link_to menu_items_path do %>
+        <div class="menu-items mt-3 shadow offset-3 col-6">
+          <i class="fas fa-hamburger"></i>
+        </div>
+      <% end %>
     </div>
 
   <% else %>

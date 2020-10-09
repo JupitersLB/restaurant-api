@@ -2,7 +2,7 @@ class MenuItemsController < ApplicationController
   before_action :set_menu_item, only: [:show, :edit, :update]
 
   def index
-    @menu_items = MenuItem.where(menu: params[:menu_id])
+    @menu_items = MenuItem.all
   end
 
   def show; end

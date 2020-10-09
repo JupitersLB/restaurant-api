@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [ :edit, :update]
 
   def index
-    @menu = Menu.all
+    @menus = Menu.all
   end
 
   def show

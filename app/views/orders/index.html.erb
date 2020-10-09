@@ -1,0 +1,11 @@
+<h1>Orders</h1>
+
+<% @orders.each do |order| %>
+  <p><%= order.table %></p>
+  <p><%= order.total_price %></p>
+  <p>Items</p>
+  <% order.menu_items.each do |item| %>
+    <p><%= item.name %></p>
+    <p><%= item.price %></p>
+  <% end %>
+<% end %>

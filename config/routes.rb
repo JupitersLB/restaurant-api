@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :menus, only: :show do
-    resources :menu_items, except: [:destroy]
+  resources :menus, only: [ :show, :index ] do
+    resources :menu_items, only: :create
   end
+
+  resources :menu_items, except: [ :destroy, :create ]
+
+  resources :orders, only: [ :index, :show ]
 end
