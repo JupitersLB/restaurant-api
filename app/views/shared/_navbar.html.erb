@@ -1,6 +1,43 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="my-navbar">
+  <% if user_signed_in? %>
+    <div class="user-profile">
+      <div class="user-image">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large"%>
+      </div>
+      <div class="user-details">
+        <h4>Hello, <%= current_user.email %></h4>
+      </div>
+    </div>
+    <div class="my-nav-item">
+      <%= link_to destroy_user_session_path, method: :delete, class: 'my-nav-link' do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    </div>
+
+    <div class="app-nav text-center">
+      <div class="new-customer shadow offset-3 col-6">
+        <i class="fas fa-user-friends"></i>
+      </div>
+      <div class="orders mt-3 shadow offset-3 col-6">
+        <i class="fas fa-concierge-bell"></i>
+      </div>
+      <div class="menus mt-3 shadow offset-3 col-6">
+        <i class="fas fa-clipboard-list"></i>
+      </div>
+      <div class="menu-items mt-3 shadow offset-3 col-6">
+        <i class="fas fa-hamburger"></i>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="my-nav-item">
+      <%= link_to "Login", new_user_session_path, class: "my-nav-link" %>
+    </div>
+  <% end %>
+</div>
+
+<!-- <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,3 +70,4 @@
     </ul>
   </div>
 </div>
+ -->

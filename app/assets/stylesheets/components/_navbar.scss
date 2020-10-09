@@ -1,12 +1,30 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.my-navbar {
+  padding: 32px;
+  width: 20%;
+  height: 100vh;
+  background-color: pink;
+  .user-profile {
+    .user-image {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 8px;
+    }
+  }
+  .my-nav-item {
+    text-align: center;
+    padding-bottom: 16px;
+    .my-nav-link > i {
+      padding: 16px;
+      font-size: 24px;
+      color: black;
+    }
+  }
+  .app-nav > div {
+    font-size: 60px;
+    padding: 16px;
+    border-radius: 5%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
