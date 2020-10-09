@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.user = User.create(role: 'customer', email: 'customer@gmail.com', password: 'password')
+    @order.user = User.create(role: 'customer', email: "#{@order.table}#{(0...8).map { (65 + rand(26)).chr }.join}@gmail.com", password: 'password')
     if @order.save
       redirect_to root_path
     else
