@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.includes(:menu_items)
+    @orders = Order.where(paid: false).includes(:menu_items)
   end
 
   def new
@@ -11,9 +11,19 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = User.create(role: 'customer', email: "#{@order.table}#{(0...8).map { (65 + rand(26)).chr }.join}@gmail.com", password: 'password')
     if @order.save
-      redirect_to root_path
+      redirect_to orders_path
     else
       render :new
+    end
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @order.update(paid: true)
+    if @order.save
+      redirect_to orders_path
+    else
+      render :index
     end
   end
 
