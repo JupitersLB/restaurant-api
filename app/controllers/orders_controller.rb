@@ -12,7 +12,8 @@ class OrdersController < ApplicationController
   def show
     @order = Order.where(id: params[:id]).includes(:user).first
     menu_id = Menu.active.id
-    qrcode = RQRCode::QRCode.new("http://localhost:3000/api/v1/menus/#{menu_id}/menu_items?user_email=#{@order.user.email}&user_token=#{@order.user.authentication_token}")
+    base_url = 'https://restaurant-covid-api-app.herokuapp.com/api/v1/menus/'
+    qrcode = RQRCode::QRCode.new("#{base_url}#{menu_id}/menu_items?user_email=#{@order.user.email}&user_token=#{@order.user.authentication_token}")
 
     @svg = qrcode.as_svg(
       offset: 0,
