@@ -3,7 +3,7 @@
 <div class="d-flex">
   <% @orders.each do |order| %>
     <div class="px-3">
-      <p><%= order.table %></p>
+      <%= link_to order.table, order_path(order) %>
       <p><%= order.total_price %></p>
       <p>Items</p>
       <% order.menu_items.each do |item| %>

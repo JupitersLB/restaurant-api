@@ -32,6 +32,7 @@ gem 'devise'
 gem 'simple_token_authentication'
 gem 'pundit'
 gem 'cloudinary'
+gem 'rqrcode'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
