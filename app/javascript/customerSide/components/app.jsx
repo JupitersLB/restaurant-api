@@ -15,33 +15,37 @@ class App extends Component {
       userEmail: '',
       userToken: '',
       menu: [],
-
+      isLoaded: false,
+      category: ''
     }
   }
 
   componentDidMount() {
+    this.checkUser();
+    fetchMenu().promise.then(r => r.map(menu => this.setState({
+      menu: [...this.state.menu, menu]
+    }, () => this.setState({
+      category: this.state.menu[0],
+      isLoaded: true
+      }))));
+  }
+
+  checkUser = () => {
     if (typeof QueryString.parse(location.search).user_email !== "undefined") {
       const params = QueryString.parse(location.search)
-      console.log(params.user_email);
-      console.log(params.user_token);
       this.setState({
         userEmail: params.user_email,
         userToken: params.user_token
       })
     }
-
-    fetchMenu().promise.then(r => r.map(menu => this.setState({
-      menu: [...this.state.menu, menu]
-    })));
   }
 
-
   render() {
-    const {userEmail, userToken, menu} = this.state
+    const {userEmail, userToken, menu, category, isLoaded} = this.state
     return (
       <div>
         <CategoryList menu={menu} />
-        <MenuItemList menu={menu} />
+        <MenuItemList menu={menu} isLoaded={isLoaded} category={category} />
       </div>
     );
   }

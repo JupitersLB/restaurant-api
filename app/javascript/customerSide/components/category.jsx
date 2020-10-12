@@ -3,7 +3,7 @@ import React from 'react';
 const Category = (props) => {
   const { category } = props;
   return (
-    <div className="category-card">
+    <div className="category-card shadow">
       <p>{category}</p>
     </div>
   );
