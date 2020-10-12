@@ -5,13 +5,17 @@ import QueryString from "query-string";
 import CategoryList from '../containers/categoryList';
 import MenuItemList from '../containers/menuItemList';
 
+import { fetchMenu } from '../actions/index';
+
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      user_email: '',
-      user_token: ''
+      userEmail: '',
+      userToken: '',
+      menu: [],
+
     }
   }
 
@@ -21,18 +25,23 @@ class App extends Component {
       console.log(params.user_email);
       console.log(params.user_token);
       this.setState({
-        user_email: params.user_email,
-        user_token: params.user_token
+        userEmail: params.user_email,
+        userToken: params.user_token
       })
     }
+
+    fetchMenu().promise.then(r => r.map(menu => this.setState({
+      menu: [...this.state.menu, menu]
+    })));
   }
 
 
   render() {
+    const {userEmail, userToken, menu} = this.state
     return (
-      <div className="container-fluid">
-        <CategoryList />
-        <MenuItemList />
+      <div>
+        <CategoryList menu={menu} />
+        <MenuItemList menu={menu} />
       </div>
     );
   }
