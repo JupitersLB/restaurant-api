@@ -11,6 +11,7 @@ export default class MenuItemList extends Component {
     }
 
     return (
+
       <div className="menu-item-list-container">
         <h1>Menu Items</h1>
         { array.map( (item, idx) => <MenuItem item={item} key={idx} />)}

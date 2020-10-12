@@ -2,7 +2,8 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, only: :create
 
   def create
-    order = Order.find(params[:order_id])
+    user = User.find_by(email: request.headers["X-User-Email"])
+    order = Order.find_by(user: user)
     @order_item = OrderItem.new(order_params)
     @order_item.order = order
     authorize @order_item

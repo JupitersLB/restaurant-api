@@ -1,13 +1,23 @@
 import React from 'react';
 
 const MenuItem = (props) => {
+
+  const handleClick = (e) => {
+    const menuCard = document.querySelector(`#menu-item-${item.id} .btn`);
+    menuCard.classList.remove('d-none');
+    console.log(menuCard);
+    console.log(item);
+  }
+
   const { item } = props;
-  console.log(item);
   return (
-    <div className="menu-item-card shadow">
+    <div className="menu-item-card shadow" id={`menu-item-${item.id}`} onClick={handleClick}>
       <p><b>{item.name}</b></p>
       <p>{item.description}</p>
       <p>{item.price}</p>
+      <div className="btn btn-primary d-none">
+        <p>Order!</p>
+      </div>
     </div>
   );
 }
