@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :menu_items, only: :create
   end
 
+  resources :customers, only: :index
+
   resources :orders, only: [ :new, :create ]
 
   resources :menu_items, except: [ :destroy, :create ]
