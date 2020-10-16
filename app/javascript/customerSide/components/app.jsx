@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import QueryString from "query-string";
+import Modal from 'react-bootstrap/Modal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+
 
 import CategoryList from '../containers/categoryList';
 import MenuItemList from '../containers/menuItemList';
@@ -50,6 +54,10 @@ class App extends Component {
       <div>
         <CategoryList menu={menu} changeCategory={this.changeCategory} />
         <MenuItemList menu={menu} email={userEmail} token={userToken} isLoaded={isLoaded} category={category} />
+        <div className="order-list-button">
+          <FontAwesomeIcon icon={faShoppingBasket} />
+        </div>
+
       </div>
     );
   }
