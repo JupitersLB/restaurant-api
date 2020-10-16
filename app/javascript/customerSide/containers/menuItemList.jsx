@@ -9,7 +9,6 @@ export default class MenuItemList extends Component {
     if (isLoaded) {
       array = Object.values(category)[0];
     }
-
     return (
 
       <div className="menu-item-list-container">

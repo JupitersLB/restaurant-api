@@ -5,8 +5,6 @@ const MenuItem = (props) => {
   const handleClick = (e) => {
     const menuCard = document.querySelector(`#menu-item-${item.id} .btn`);
     menuCard.classList.remove('d-none');
-    console.log(menuCard);
-    console.log(item);
   }
 
   const { item } = props;

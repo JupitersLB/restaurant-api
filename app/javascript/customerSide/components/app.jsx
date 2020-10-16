@@ -40,11 +40,17 @@ class App extends Component {
     }
   }
 
+  changeCategory = (idx) => {
+    this.setState({ category: this.state.menu[idx] });
+  }
+
   render() {
     const {userEmail, userToken, menu, category, isLoaded} = this.state
+    // console.log(menu);
+    // console.log(category);
     return (
       <div>
-        <CategoryList menu={menu} />
+        <CategoryList menu={menu} changeCategory={this.changeCategory} />
         <MenuItemList menu={menu} isLoaded={isLoaded} category={category} />
       </div>
     );
