@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import QueryString from "query-string";
 import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,7 +10,7 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import CategoryList from '../containers/categoryList';
 import MenuItemList from '../containers/menuItemList';
 
-import { fetchMenu } from '../actions/index';
+import { fetchMenu, fetchOrder } from '../actions/index';
 
 class App extends Component {
 
@@ -20,7 +21,9 @@ class App extends Component {
       userToken: '',
       menu: [],
       isLoaded: false,
-      category: ''
+      category: '',
+      order: '',
+      show: false
     }
   }
 
@@ -44,18 +47,55 @@ class App extends Component {
     }
   }
 
+  handleClick = () => {
+    fetchOrder(this.state.userEmail).promise.then(order => this.setState({
+      order: order,
+      show: true
+    }));
+  }
+
+  handleClose = () => {
+    this.setState({ show: false });
+  }
+
+
+
   changeCategory = (idx) => {
     this.setState({ category: this.state.menu[idx] });
   }
 
   render() {
-    const {userEmail, userToken, menu, category, isLoaded} = this.state
+    const {userEmail, userToken, menu, category, isLoaded, order, show} = this.state;
+    const table = order.table;
+    // needs to be order.order_items with a new component
+    const items = order.items;
+    const total = order.total_price;
     return (
       <div>
         <CategoryList menu={menu} changeCategory={this.changeCategory} />
         <MenuItemList menu={menu} email={userEmail} token={userToken} isLoaded={isLoaded} category={category} />
         <div className="order-list-button">
-          <FontAwesomeIcon icon={faShoppingBasket} />
+          <FontAwesomeIcon icon={faShoppingBasket} onClick={this.handleClick} />
+
+          <Modal show={show} onHide={this.handleClose} animation={false}>
+            <Modal.Header closeButton>
+              <Modal.Title>Your Order</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p> Table : {table} </p>
+              <p> Items : {items} </p>
+              <p> Total : ¥{total} </p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={this.handleClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
         </div>
 
       </div>

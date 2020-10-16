@@ -7,6 +7,18 @@ export function fetchMenu() {
   return { promise }
 }
 
+export function fetchOrder(email) {
+  const url = `${BASE_URL}/orders/1`
+  const promise = fetch(url, {
+    headers: {
+      'X-User-Email': email
+    },
+    credentials: "same-origin"
+  }).then(r => r.json());
+
+  return { promise }
+}
+
 export function updateOrder(itemId, email, token) {
   const url = `${BASE_URL}/orders/1/order_items`;
   const body = { "order_item": { "menu_item_id": itemId, "order_id": ""} };

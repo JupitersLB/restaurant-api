@@ -7,7 +7,8 @@ class Api::V1::OrdersController < Api::V1::BaseController
   end
 
   def show
-    @order = Order.find(params[:id])
+    user = User.find_by(email: request.headers["X-User-Email"])
+    @order = Order.find_by(user: user)
     authorize @order
   end
 end
