@@ -9,8 +9,8 @@ class CustomersController < ApplicationController
   end
 
   def authenticate
-    cookies.signed[:email] = params[:user_email]
-    cookies.signed[:token] = params[:user_token]
+    cookies.signed[:email] = { value: params[:user_email], expires: 2.minutes }
+    cookies.signed[:token] =  { value: params[:user_token], expires: 2.minutes }
 
     redirect_to action: :index
   end
