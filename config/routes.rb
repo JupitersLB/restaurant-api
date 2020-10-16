@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     resources :menu_items, only: :create
   end
 
-  resources :customers, only: :index
+  resources :customers, only: :index do
+    collection do
+      get :authenticate
+    end
+  end
 
   resources :orders, only: [ :new, :create ]
 

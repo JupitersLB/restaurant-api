@@ -10,7 +10,7 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import CategoryList from '../containers/categoryList';
 import MenuItemList from '../containers/menuItemList';
 
-import { fetchMenu, fetchOrder } from '../actions/index';
+import { fetchMenu, fetchOrder, fetchHeaders } from '../actions/index';
 
 class App extends Component {
 
@@ -28,7 +28,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.checkUser();
+    fetchHeaders().promise.then(r => this.setState({
+      userEmail: r.headers.get('X-User-Email'),
+      userToken: r.headers.get('X-User-Token')
+    }));
+    // this.checkUser();
     fetchMenu().promise.then(r => r.map(menu => this.setState({
       menu: [...this.state.menu, menu]
     }, () => this.setState({
@@ -37,18 +41,19 @@ class App extends Component {
       }))));
   }
 
-  checkUser = () => {
-    if (typeof QueryString.parse(location.search).user_email !== "undefined") {
-      const params = QueryString.parse(location.search)
-      this.setState({
-        userEmail: params.user_email,
-        userToken: params.user_token
-      })
-    }
-  }
+  // gets user by query string
+  // checkUser = () => {
+  //   if (typeof QueryString.parse(location.search).user_email !== "undefined") {
+  //     const params = QueryString.parse(location.search)
+  //     this.setState({
+  //       userEmail: params.user_email,
+  //       userToken: params.user_token
+  //     })
+  //   }
+  // }
 
   handleClick = () => {
-    fetchOrder(this.state.userEmail).promise.then(order => this.setState({
+    fetchOrder(this.state.userEmail, this.state.userToken).promise.then(order => this.setState({
       order: order,
       show: true
     }));

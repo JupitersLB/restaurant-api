@@ -7,15 +7,22 @@ export function fetchMenu() {
   return { promise }
 }
 
-export function fetchOrder(email) {
+export function fetchOrder(email, token) {
   const url = `${BASE_URL}/orders/1`
   const promise = fetch(url, {
     headers: {
-      'X-User-Email': email
+      'X-User-Email': email,
+      'X-User-Token': token
     },
     credentials: "same-origin"
   }).then(r => r.json());
 
+  return { promise }
+}
+
+export function fetchHeaders() {
+  const url = window.location.href
+  const promise = fetch(url, { credentials: "same-origin"}).then(r => r);
   return { promise }
 }
 
