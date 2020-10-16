@@ -46,12 +46,10 @@ class App extends Component {
 
   render() {
     const {userEmail, userToken, menu, category, isLoaded} = this.state
-    // console.log(menu);
-    // console.log(category);
     return (
       <div>
         <CategoryList menu={menu} changeCategory={this.changeCategory} />
-        <MenuItemList menu={menu} isLoaded={isLoaded} category={category} />
+        <MenuItemList menu={menu} email={userEmail} token={userToken} isLoaded={isLoaded} category={category} />
       </div>
     );
   }
