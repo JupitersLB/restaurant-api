@@ -19,7 +19,7 @@ const MenuItem = (props) => {
     <div className="menu-item-card shadow" id={`menu-item-${item.id}`} onClick={handleClick}>
       <p><b>{item.name}</b></p>
       <p>{item.description}</p>
-      <p>{item.price}</p>
+      <p>¥{item.price}</p>
       <div className="btn btn-primary d-none" id={item.id} onClick={handleOrder}>
         <p>Order!</p>
       </div>
