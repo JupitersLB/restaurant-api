@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 import { updateOrder } from '../actions/index';
 
@@ -12,6 +13,10 @@ const MenuItem = (props) => {
   const handleOrder = () => {
     const menuCard = document.querySelector(`#menu-item-${item.id} .btn`);
     updateOrder(menuCard.id, email, token);
+    swal({
+      text: `Ordered ${item.name}`,
+      icon: "success"
+    });
   }
 
   const { item, email, token } = props;
