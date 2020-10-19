@@ -8,7 +8,12 @@ Rails.application.routes.draw do
         resources :menu_items, only: :index
       end
       resources :orders, only: [:index, :show, :update] do
-        resources :order_items, only: :create
+        resources :order_items, only: :create do
+          member do
+            patch 'cancel'
+            patch 'served'
+          end
+        end
       end
     end
   end

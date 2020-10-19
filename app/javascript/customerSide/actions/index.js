@@ -26,6 +26,24 @@ export function fetchHeaders() {
   return { promise }
 }
 
+export function cancelOrder(itemItd, email, token) {
+  const url = `${BASE_URL}/orders/1/order_items/${itemId}`;
+  // const body = { "order_item": { "menu_item_id": itemId, "order_id": ""} };
+  // const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
+  const promise = fetch(url, {
+    method: '`PATCH`',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      // 'X-CSRF-Token': csrfToken
+      'X-User-Email': email,
+      'X-User-Token': token
+    },
+    credentials: 'same-origin',
+    body: JSON.stringify(body)
+  }).then(r => r.json());
+}
+
 export function updateOrder(itemId, email, token) {
   const url = `${BASE_URL}/orders/1/order_items`;
   const body = { "order_item": { "menu_item_id": itemId, "order_id": ""} };

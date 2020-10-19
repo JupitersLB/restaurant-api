@@ -8,4 +8,12 @@ class OrderItemPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def cancel?
+    true
+  end
+
+  def served?
+    @user == 'admin' || @user == 'staff'
+  end
 end

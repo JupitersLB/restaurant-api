@@ -1,5 +1,5 @@
 class Api::V1::OrderItemsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, only: :create
+  acts_as_token_authentication_handler_for User, only: %i[create update]
 
   def create
     user = User.find_by(email: request.headers["X-User-Email"])
@@ -16,10 +16,36 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
     end
   end
 
+  def cancel
+    order_item = OrderItem.find(params[:id])
+    order_item.status = 'cancelled'
+    if order_item.save
+      order = order_item.order
+      order.total_price -= order_item.menu_item.price
+      order.save
+      authorize order_item
+      render json: order_item
+    else
+      render_error
+    end
+  end
+
+  def served
+    order_item = OrderItem.find(params[:id])
+    order_item.status = 'served'
+    if order_item.save
+      order = order_item.order
+      authorize order_item
+      render json: order_item
+    else
+      render_error
+    end
+  end
+
   private
 
   def order_params
-    params.require(:order_item).permit(:order_id, :menu_item_id)
+    params.require(:order_item).permit(:order_id, :menu_item_id, :status)
   end
 
   def render_error
