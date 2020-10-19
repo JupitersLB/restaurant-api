@@ -9,7 +9,7 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 import CategoryList from '../containers/categoryList';
 import MenuItemList from '../containers/menuItemList';
-import MenuItem from '../components/menuItem';
+import OrderItem from '../components/orderItem';
 
 import { fetchMenu, fetchOrder, fetchHeaders } from '../actions/index';
 
@@ -79,6 +79,7 @@ class App extends Component {
       items = order.order_items;
     }
     const total = order.total_price;
+    console.log(order)
     return (
       <div>
         <CategoryList menu={menu} changeCategory={this.changeCategory} />
@@ -93,7 +94,7 @@ class App extends Component {
             <Modal.Body>
               <p> Table : {table} </p>
               <p><b>Items:</b></p>
-              { items.map( (item, idx) => <MenuItem item={item} key={idx} />)}
+              { items.map( (item, idx) => <OrderItem item={item} key={idx} />)}
               <p> Total : ¥{total} </p>
             </Modal.Body>
             <Modal.Footer>
