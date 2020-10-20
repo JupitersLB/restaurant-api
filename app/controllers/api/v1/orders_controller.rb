@@ -8,7 +8,11 @@ class Api::V1::OrdersController < Api::V1::BaseController
 
   def show
     user = User.find_by(email: request.headers["X-User-Email"])
-    @order = Order.where(user: user).includes(:menu_items).first
+    @order = Order.where(user: user)
+                  .includes(:order_items)
+                  .where(order_items: {status: ['pending', 'served']})
+                  .includes(:menu_items)
+                  .first
     authorize @order
   end
 end

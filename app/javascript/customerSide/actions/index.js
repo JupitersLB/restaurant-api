@@ -26,12 +26,12 @@ export function fetchHeaders() {
   return { promise }
 }
 
-export function cancelOrder(itemItd, email, token) {
-  const url = `${BASE_URL}/orders/1/order_items/${itemId}`;
+export function cancelOrder(itemId, email, token) {
+  const url = `${BASE_URL}/orders/1/order_items/${itemId}/cancel`;
   // const body = { "order_item": { "menu_item_id": itemId, "order_id": ""} };
   // const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
   const promise = fetch(url, {
-    method: '`PATCH`',
+    method: 'PATCH',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -40,8 +40,10 @@ export function cancelOrder(itemItd, email, token) {
       'X-User-Token': token
     },
     credentials: 'same-origin',
-    body: JSON.stringify(body)
-  }).then(r => r.json());
+  });
+  return {
+    promise
+  };
 }
 
 export function updateOrder(itemId, email, token) {

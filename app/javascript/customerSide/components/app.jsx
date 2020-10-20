@@ -79,7 +79,6 @@ class App extends Component {
       items = order.order_items;
     }
     const total = order.total_price;
-    console.log(order)
     return (
       <div>
         <CategoryList menu={menu} changeCategory={this.changeCategory} />
