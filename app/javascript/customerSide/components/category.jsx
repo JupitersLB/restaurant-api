@@ -11,7 +11,7 @@ const Category = (props) => {
   const className = activeIndex === id ? 'category-card active' : 'category-card';
   return (
     <div className={className} id={`category-${id}`} onClick={handleClick}>
-      <h4>{category}</h4>
+      <h5>{category}</h5>
     </div>
   );
 }

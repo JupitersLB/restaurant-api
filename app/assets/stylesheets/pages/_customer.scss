@@ -42,7 +42,7 @@
 }
 
 .category-card.active {
-  h4 {
+  h5 {
     font-weight: bolder;
   }
 }
@@ -55,11 +55,12 @@
   .menu-item-image {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    height: 75%;
+    height: 180px;
     width: 100%;
     object-fit: cover;
   }
   .menu-item-info {
+    padding: 8px;
     display: flex;
     p {
       margin-bottom: 4px;
@@ -71,5 +72,26 @@
         text-overflow: ellipsis;
       }
     }
+    .menu-item-info-price {
+      display: flex;
+      flex-direction: column;
+    }
   }
+  .order-button {
+    display: none;
+  }
+}
+
+.menu-item-card.active {
+  height: 40vh;
+  .order-button {
+    display: block;
+  }
+  .menu-item-info-details {
+      p {
+        overflow: visible;
+        white-space: normal;
+        text-overflow: clip;
+      }
+    }
 }
