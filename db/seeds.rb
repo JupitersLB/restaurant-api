@@ -76,8 +76,8 @@ puts "Created menu item #{menu_item.id}"
 
 file = URI.open('https://www.simplyrecipes.com/wp-content/uploads/2016/08/2016-08-24-Harissa-Salmon-2-1024x683.jpg')
 params = {}
-params[:name] = 'Roast salmon with pesto sauce & beetroot slaw'
-params[:description] = 'Baked salmon topped with pesto and sour cream sauce served with grated root vegetables makes a quick and wholesome midweek meal'
+params[:name] = 'Roast salmon with pesto sauce'
+params[:description] = 'Baked salmon topped with pesto and sour cream sauce served with grated root vegetables'
 params[:category] = 'Fish'
 params[:price] = 1800
 menu_item = MenuItem.new(params)
@@ -88,7 +88,7 @@ puts "Created menu item #{menu_item.id}"
 
 file = URI.open('https://images-na.ssl-images-amazon.com/images/I/611KsDstzYL._SX679_.jpg')
 params = {}
-params[:name] = 'Honey & orange roast sea bass with lentils'
+params[:name] = 'Honey & orange roast sea bass'
 params[:description] = 'Liven up your midweek meals with this low-calorie, gluten-free fish supper'
 params[:category] = 'Fish'
 params[:price] = 2100
@@ -101,7 +101,7 @@ puts "Created menu item #{menu_item.id}"
 file = URI.open('https://images-gmi-pmc.edge-generalmills.com/b57341e4-5fbf-4413-9445-1aca51a34e57.jpg')
 params = {}
 params[:name] = 'Glazed gammon'
-params[:description] = 'Add a sticky honey and mustard glaze to gammon for a delicious sweetness that contrasts with the saltiness of the meat. It\'s great for a celebration supper'
+params[:description] = 'Sticky honey and mustard glaze to gammon for a delicious sweetness that contrasts with the saltiness of the meat'
 params[:category] = 'Meat'
 params[:price] = 2200
 menu_item = MenuItem.new(params)
@@ -113,7 +113,7 @@ puts "Created menu item #{menu_item.id}"
 file = URI.open('https://www.newideafood.com.au/media/14174/steak-blue-cheese-pie.jpg')
 params = {}
 params[:name] = 'Steak & blue cheese pie'
-params[:description] = 'Bake a comforting steak pie with tender meat, a deeply savoury gravy and molten blue cheese for an extra hit of flavour. The ideal winter warmer'
+params[:description] = 'Steak pie with tender meat, a deeply savoury gravy and molten blue cheese for an extra hit of flavour'
 params[:category] = 'Meat'
 params[:price] = 2400
 menu_item = MenuItem.new(params)
@@ -137,7 +137,7 @@ puts "Created menu item #{menu_item.id}"
 file = URI.open('https://www.coffeedesk.com/blog/wp-content/uploads/2020/05/organic-herbata-zaparzona-1920x1280.jpg')
 params = {}
 params[:name] = 'Oolong Tea'
-params[:description] = 'Oolong tea is a traditional Chinese tea. It\'s made from the leaves of the Camellia sinensis plant, the same plant used to make green tea and black tea'
+params[:description] = 'Oolong tea is a traditional Chinese tea.'
 params[:category] = 'Drinks'
 params[:price] = 450
 menu_item = MenuItem.new(params)
@@ -161,7 +161,7 @@ puts "Created menu item #{menu_item.id}"
 file = URI.open('https://www.thespruceeats.com/thmb/yW4KN2d6VGwysQauBsmX9-lOkaQ=/2471x1853/smart/filters:no_upscale()/super-easy-fudge-102016-58188f0c3df78cc2e893a23f.jpg')
 params = {}
 params[:name] = 'Fudge'
-params[:description] = 'Old Fashioned Chocolate Fudge, creamy and slightly crumbly this melt in your mouth homemade fudge is the best'
+params[:description] = 'Old Fashioned Chocolate Fudge, creamy and slightly crumbly this melt in your mouth homemade fudge'
 params[:category] = 'Dessert'
 params[:price] = 1300
 menu_item = MenuItem.new(params)

@@ -83,7 +83,7 @@
 }
 
 .menu-item-card.active {
-  height: 40vh;
+  height: fit-content;
   .order-button {
     display: block;
   }
