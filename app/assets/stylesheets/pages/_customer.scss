@@ -10,8 +10,9 @@
 .menu-item-list-container {
   height: 85vh;
   width: 100vw;
+  margin: auto;
   padding: 8px;
-  background-color: blue;
+  background-color: rgb(250, 250, 250);
 }
 
 .category-card {
@@ -43,5 +44,32 @@
 .category-card.active {
   h4 {
     font-weight: bolder;
+  }
+}
+
+.menu-item-card {
+  border-radius: 8px;
+  width: 95vw;
+  height: 30vh;
+  margin-bottom: 16px;
+  .menu-item-image {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 75%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .menu-item-info {
+    display: flex;
+    p {
+      margin-bottom: 4px;
+    }
+    .menu-item-info-details {
+      p {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
   }
 }
