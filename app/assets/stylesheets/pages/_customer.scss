@@ -1,21 +1,30 @@
 .category-list-container {
   display: flex;
-  height: 25vh;
+  height: 10vh;
   width: 100vw;
   padding: 8px;
-  background-color: red;
+  background-color: #BA55D3;
+  overflow-x: scroll;
 }
 
 .menu-item-list-container {
-  height: 75vh;
+  height: 85vh;
   width: 100vw;
   padding: 8px;
   background-color: blue;
 }
 
 .category-card {
+  &:first-child {
+    border-left: none;
+  }
   padding: 8px;
-  height: 80%;
+  height: fit-content;
+  border-right: 1px solid rgb(30, 30, 30);
+  border-left: 1px solid rgb(30, 30, 30);
+  &:last-child {
+    border-right: none;
+  }
 }
 
 .order-list-button {
@@ -23,4 +32,16 @@
   bottom: 20px;
   right: 35px;
   font-size: 40px;
+}
+
+.restaurant-header {
+  display: flex;
+  justify-content: center;
+  background-color: #BA55D3;
+}
+
+.category-card.active {
+  h4 {
+    font-weight: bolder;
+  }
 }
