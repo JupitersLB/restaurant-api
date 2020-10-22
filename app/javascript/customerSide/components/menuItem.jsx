@@ -1,7 +1,6 @@
 import React from 'react';
 import swal from 'sweetalert';
 
-import { updateOrder } from '../actions/index';
 
 const MenuItem = (props) => {
 
@@ -13,14 +12,14 @@ const MenuItem = (props) => {
 
   const handleOrder = () => {
     const menuCard = document.querySelector(`#menu-item-${item.id} .btn`);
-    updateOrder(menuCard.id, email, token);
+    updateOrder(menuCard.id, email, token, 'add');
     swal({
       text: `Ordered ${item.name}`,
       icon: "success"
     });
   }
 
-  const { item, email, token } = props;
+  const { item, email, token, updateOrder } = props;
   return (
     <div className="menu-item-card shadow" id={`menu-item-${item.id}`} onClick={handleClick}>
       <img className="menu-item-image" src={item.image_url} alt=""></img>

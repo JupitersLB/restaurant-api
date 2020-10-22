@@ -3,16 +3,15 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-import { cancelOrder } from '../actions/index';
-
 const OrderItem = (props) => {
 
   const handleClick = () => {
     const itemCard = document.querySelector(`#order-item-${item.id}`);
-    cancelOrder(item.id, email, token);
+    updateOrder(item.id, email, token, 'cancel');
   }
 
-  const { item, email, token } = props;
+  const { item, email, token, updateOrder } = props;
+
   return (
     <div className="order-item-card shadow" id={`order-item-${item.id}`}>
       <div className="row">
