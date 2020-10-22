@@ -89,11 +89,8 @@ class App extends Component {
               <p> Total : ¥{total} </p>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>
-                Close
-              </Button>
               <Button variant="primary" onClick={this.handleClose}>
-                Save Changes
+                Close
               </Button>
             </Modal.Footer>
           </Modal>
