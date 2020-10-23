@@ -1,0 +1,33 @@
+.staff-menu-item-card {
+  border-radius: 8px;
+  width: inherit;
+  height: 25vh;
+  .menu-item-image {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 160px;
+    width: inherit;
+    object-fit: cover;
+  }
+  .menu-item-info {
+    padding: 8px;
+    display: flex;
+    p {
+      margin-bottom: 4px;
+    }
+    .menu-item-info-details {
+      p {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .menu-item-info-price {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .order-button {
+    display: none;
+  }
+}

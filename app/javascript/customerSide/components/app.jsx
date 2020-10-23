@@ -70,7 +70,7 @@ class App extends Component {
     const {userEmail, userToken, menu, category, isLoaded, order, items, show} = this.state;
     const table = order.table;
     const total = order.total_price;
-    // console.log(order);
+
     return (
       <div>
         <CategoryList menu={menu} changeCategory={this.changeCategory} />
@@ -85,7 +85,7 @@ class App extends Component {
             <Modal.Body>
               <p> Table : {table} </p>
               <p><b>Items:</b></p>
-              { items.size > 0 ? items.map( (item, idx) => <OrderItem item={item} key={idx} updateOrder={this.updateOrder} />) : ''}
+              { items.length > 0 ? items.map( (item, idx) => <OrderItem item={item} key={idx} updateOrder={this.updateOrder} />) : ''}
               <p> Total : ¥{total} </p>
             </Modal.Body>
             <Modal.Footer>

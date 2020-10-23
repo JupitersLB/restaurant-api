@@ -1,12 +1,27 @@
-<h3>menu items</h3>
 <div class="row">
   <% @menu_items.each do |item| %>
-    <div class="col-3 py-2">
-      <p><b><%= item.name %></b></p>
-      <p><%= item.description %></p>
-      <p><%= item.category %></p>
-      <p>¥<%= item.price %></p>
-      <%= cl_image_tag item.photo.key, height: 300, width: 400, crop: :fill %>
+    <div class="col-4 py-2">
+      <div class="staff-menu-item-card shadow">
+        <%= cl_image_tag item.photo.key, crop: :fill, class: 'menu-item-image' %>
+        <div class="menu-item-info row">
+          <div class="menu-item-info-details col-8">
+            <p><b><%= item.name %></b></p>
+            <p><%= item.description %></p>
+          </div>
+          <div class="col-4">
+            <div class="row">
+              <div class="d-flex align-items-center justify-content-end col">
+                <p><%= item.category %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="d-flex align-items-center justify-content-end col">
+                <p>¥<%= item.price %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
