@@ -13,7 +13,7 @@
       </thead>
       <tbody id="orders" data-order-id="<%= order.id %>">
         <% order.order_items.order(updated_at: :desc).limit(15).each do |item| %>
-          <%= render 'order_item', item: item %>
+          <%= render 'order_item', item: item, control: false %>
         <% end %>
       </tbody>
     </table>
