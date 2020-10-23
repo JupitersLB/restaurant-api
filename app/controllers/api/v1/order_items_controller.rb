@@ -12,7 +12,7 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
       @order.save
       OrderChannel.broadcast_to(
         @order,
-        render_to_string(partial: "order_items/order_item", locals: { item: @order_item }, formats: [:html])
+        render_to_string(partial: "order_items/order_item", locals: { item: @order_item, control: false  }, formats: [:html])
       )
       redirect_to api_v1_order_path(@order_item.order)
     else
@@ -29,7 +29,7 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
       @order.save
       OrderChannel.broadcast_to(
         @order,
-        render_to_string(partial: "order_items/order_item", locals: { item: @order_item }, formats: [:html])
+        render_to_string(partial: "order_items/order_item", locals: { item: @order_item, control: false }, formats: [:html])
       )
       authorize @order_item
       render json: @order_item
