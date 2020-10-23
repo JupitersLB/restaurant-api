@@ -32,4 +32,6 @@ Rails.application.routes.draw do
 
   resources :menu_items, except: [ :destroy, :create ]
 
+  resources :order_items, only: :index
+
 end

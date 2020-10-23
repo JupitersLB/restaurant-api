@@ -1,0 +1,22 @@
+<% order_items.each do |item| %>
+  <tr>
+    <td>
+      <p><%= item.order.table %></p>
+    </td>
+    <td>
+      <p><%= item.status %></p>
+    </td>
+    <td>
+      <p><%= item.order.paid %></p>
+    </td>
+    <td>
+      <p><%= item.menu_item.name %></p>
+    </td>
+    <td>
+      <p>¥<%= item.menu_item.price %></p>
+    </td>
+    <td>
+      <p><%= time_ago_in_words(item.created_at) %></p>
+    </td>
+  </tr>
+<% end %>
