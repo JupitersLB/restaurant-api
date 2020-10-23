@@ -3,9 +3,6 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.where(paid: false).includes(:menu_items)
-  end
-
-  def new
     @order = Order.new()
   end
 
@@ -29,7 +26,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to orders_path
     else
-      render :new
+      render :index
     end
   end
 

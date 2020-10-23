@@ -28,10 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, only: [ :new, :create ]
+  resources :orders, only: [ :index, :show, :create, :update ]
 
   resources :menu_items, except: [ :destroy, :create ]
-
-  resources :orders, only: [ :index, :show, :update ]
 
 end

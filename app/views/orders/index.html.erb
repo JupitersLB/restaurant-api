@@ -1,20 +1,14 @@
+<h1>Create a new customer!</h1>
+<%= render 'form' %>
+
 <h1>Orders</h1>
 
-<div class="d-flex">
-  <% @orders.each do |order| %>
-    <div class="px-3">
-      <%= link_to order.table, order_path(order) %>
-      <p><%= order.total_price %></p>
-      <p>Items</p>
-      <% order.menu_items.each do |item| %>
-        <p><%= item.name %></p>
-        <p><%= item.price %></p>
-      <% end %>
-      <%= link_to order_path(order), remote: true, method: :patch do %>
-        <div class="btn btn-primary">
-          <p>paid</p>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<table class="order-table">
+  <tr>
+    <th>Table</th>
+    <th>Total Price</th>
+    <th>Number of Items</th>
+    <th>Controls</th>
+  </tr>
+  <%= render 'orders', orders: @orders %>
+</table>

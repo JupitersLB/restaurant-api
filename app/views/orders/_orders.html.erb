@@ -1,0 +1,14 @@
+<% orders.each do |order| %>
+  <tr>
+    <td><%= link_to order.table, order_path(order) %></td>
+    <td><%= order.total_price %></td>
+    <td><%= order.order_items.count %></td>
+    <td>
+      <%= link_to order_path(order), remote: true, method: :patch do %>
+        <div class="btn btn-primary btn-sm">
+          <p>pay</p>
+        </div>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
