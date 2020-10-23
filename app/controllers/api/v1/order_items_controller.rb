@@ -21,14 +21,18 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
   end
 
   def cancel
-    order_item = OrderItem.find(params[:id])
-    order_item.status = 'cancelled'
-    if order_item.save
-      order = order_item.order
-      order.total_price -= order_item.menu_item.price
-      order.save
-      authorize order_item
-      render json: order_item
+    @order_item = OrderItem.find(params[:id])
+    @order_item.status = 'cancelled'
+    if @order_item.save
+      @order = @order_item.order
+      @order.total_price -= @order_item.menu_item.price
+      @order.save
+      OrderChannel.broadcast_to(
+        @order,
+        render_to_string(partial: "order_items/order_item", locals: { item: @order_item }, formats: [:html])
+      )
+      authorize @order_item
+      render json: @order_item
     else
       render_error
     end

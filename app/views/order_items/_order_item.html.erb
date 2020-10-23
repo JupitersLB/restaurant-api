@@ -1,20 +1,20 @@
 <tr data-order-id="<%= item.order.id %>">
   <td>
-    <p><%= item.order.table %></p>
+    <p><%= item.menu_item.name %></p>
+  </td>
+  <td>
+    <p><%= time_ago_in_words(item.updated_at) %></p>
   </td>
   <td>
     <p><%= item.status %></p>
   </td>
-  <td>
-    <p><%= item.order.paid %></p>
-  </td>
-  <td>
-    <p><%= item.menu_item.name %></p>
-  </td>
-  <td>
-    <p>¥<%= item.menu_item.price %></p>
-  </td>
-  <td>
-    <p><%= time_ago_in_words(item.created_at) %></p>
-  </td>
+  <% if control == true && item.status == 'pending' %>
+    <td>
+      <%= link_to served_order_item_path(item), remote: true, method: :patch do %>
+        <div class="btn btn-primary btn-sm">
+          <p>Served</p>
+        </div>
+      <% end %>
+    </td>
+  <% end %>
 </tr>

@@ -1,10 +1,27 @@
-<h3>Customer Order</h3>
+<div class="customer-order-container">
+  <h3>Customer Order <small>(Table: <%= @order.table %> Price: <%= @order.total_price %>)</small></h3>
 
-<p class="py-3">Customer code</p>
-<p class="py-3"><%= @svg.html_safe %></p>
+  <p class="py-3"><%= @svg.html_safe %></p>
 
-<p class="py-3"><%= @order.table %></p>
-<p class="py-3"><%= @order.total_price %></p>
+  <table class="customer-table">
+    <thead>
+      <tr>
+        <th>Dish</th>
+        <th>Updated</th>
+        <th>Status</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tbody id="orders" data-order-id="<%= @order.id %>">
+        <% @order.order_items.order(updated_at: :desc).each do |item| %>
+          <%= render 'order_items/order_item', item: item, control: true %>
+        <% end %>
+      </tbody>
+    </tbody>
+
+  </table>
+</div>
 
 
 

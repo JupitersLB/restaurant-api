@@ -11,7 +11,6 @@ Rails.application.routes.draw do
         resources :order_items, only: :create do
           member do
             patch 'cancel'
-            patch 'served'
           end
         end
       end
@@ -32,6 +31,10 @@ Rails.application.routes.draw do
 
   resources :menu_items, except: [ :destroy, :create ]
 
-  resources :order_items, only: :index
+  resources :order_items, only: :index do
+    member do
+      patch 'served'
+    end
+  end
 
 end
