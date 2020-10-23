@@ -38,18 +38,6 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
     end
   end
 
-  def served
-    order_item = OrderItem.find(params[:id])
-    order_item.status = 'served'
-    if order_item.save
-      order = order_item.order
-      authorize order_item
-      render json: order_item
-    else
-      render_error
-    end
-  end
-
   private
 
   def order_params
