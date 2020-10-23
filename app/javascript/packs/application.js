@@ -24,12 +24,16 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import "../customerSide";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import "../customerSide";
+import { initOrderItemCable } from '../channels/order_item_channel';
+
 
 document.addEventListener('turbolinks:load', () => {
+  initOrderItemCable();
   // Call your functions here, e.g:
   // initSelect2();
 });

@@ -3,13 +3,17 @@ class Api::V1::OrderItemsController < Api::V1::BaseController
 
   def create
     user = User.find_by(email: request.headers["X-User-Email"])
-    order = Order.find_by(user: user)
+    @order = Order.find_by(user: user)
     @order_item = OrderItem.new(order_params)
-    @order_item.order = order
+    @order_item.order = @order
     authorize @order_item
     if @order_item.save
-      order.total_price += @order_item.menu_item.price
-      order.save
+      @order.total_price += @order_item.menu_item.price
+      @order.save
+      OrderChannel.broadcast_to(
+        @order,
+        render_to_string(partial: "order_items/order_item", locals: { item: @order_item }, formats: [:html])
+      )
       redirect_to api_v1_order_path(@order_item.order)
     else
       render_error

@@ -1,11 +1,24 @@
-<table class="order-table">
-  <tr>
-    <th>Table</th>
-    <th>Status</th>
-    <th>Paid?</th>
-    <th>Dish</th>
-    <th>Price</th>
-    <th>Created</th>
-  </tr>
-  <%= render 'order_items', order_items: @order_items %>
-</table>
+<% @orders.each do |order| %>
+  <table class="order-table">
+    <thead>
+      <tr>
+        <th>Table</th>
+        <th>Status</th>
+        <th>Paid?</th>
+        <th>Dish</th>
+        <th>Price</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <!-- <tbody id="orders">
+      <% @order_items.each do |item| %>
+        <%= render 'order_item', item: item %>
+      <% end %>
+    </tbody> -->
+    <tbody id="orders" data-order-id="<%= order.id %>">
+      <% order.order_items.order(created_at: :desc).each do |item| %>
+        <%= render 'order_item', item: item %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
