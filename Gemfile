@@ -33,6 +33,7 @@ gem 'simple_token_authentication'
 gem 'pundit'
 gem 'cloudinary'
 gem 'rqrcode'
+gem 'pg_search', '~> 2.3.0'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
