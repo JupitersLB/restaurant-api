@@ -9,7 +9,7 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 import CategoryList from '../containers/categoryList';
 import MenuItemList from '../containers/menuItemList';
-import OrderItem from '../components/orderItem';
+import OrderItem from './orderItem';
 
 import { fetchMenu, fetchOrder, fetchHeaders, cancelOrder, addOrderItem } from '../actions/index';
 
@@ -60,7 +60,15 @@ class App extends Component {
     });
   }
 
-  handleClick = () => { this.setState({ show: true }); }
+  handleClick = () => {
+    fetchOrder(this.state.userEmail, this.state.userToken)
+      .promise
+      .then(order => this.setState({
+        order: order
+      }, () => this.setState({items: this.state.order.order_items},
+        () => this.setState({show: true}))
+      ));
+  };
 
   handleClose = () => { this.setState({ show: false }); }
 

@@ -1,6 +1,8 @@
 class MenuItem < ApplicationRecord
   belongs_to :menu
   has_one_attached :photo
+  has_many :order_items
+  has_many :reviews, through: :order_items
   validates :name, :description, :category, :price, presence: true
   validates :price, numericality: true
 
