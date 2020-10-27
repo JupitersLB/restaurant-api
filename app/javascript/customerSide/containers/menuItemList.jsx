@@ -16,7 +16,7 @@ export default class MenuItemList extends Component {
     }
     return (
       <div className="menu-item-list-container pt-4">
-        { array.map( (item, idx) => <MenuItem item={item} email={email} token={token} key={idx} updateOrder={updateOrder} />)}
+        { array.map( (item, idx) => <MenuItem item={item} itemRating={item.rating} email={email} token={token} key={idx} updateOrder={updateOrder} />)}
       </div>
     );
   }

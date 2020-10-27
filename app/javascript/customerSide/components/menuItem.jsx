@@ -1,12 +1,16 @@
 import React from 'react';
 import swal from 'sweetalert';
+import ReactStars from "react-rating-stars-component";
+
+import MenuItemRating from './menuItemRating'
 
 
 const MenuItem = (props) => {
 
+  const { item, itemRating, email, token, updateOrder } = props;
+
   const handleClick = () => {
     const menuCard = document.querySelector(`#menu-item-${item.id}`);
-    // const menuButton = document.querySelector(`#menu-item-${item.id} .btn`);
     menuCard.classList.toggle('active');
   }
 
@@ -19,10 +23,10 @@ const MenuItem = (props) => {
     });
   }
 
-  const { item, email, token, updateOrder } = props;
   return (
     <div className="menu-item-card shadow" id={`menu-item-${item.id}`} onClick={handleClick}>
       <img className="menu-item-image" src={item.image_url} alt=""></img>
+      <MenuItemRating key={item.id} itemRating={itemRating} item={item} />
       <div className="menu-item-info row">
         <div className="menu-item-info-details col-9">
           <p className="header"><b>{item.name}</b></p>

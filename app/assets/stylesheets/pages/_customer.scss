@@ -60,8 +60,17 @@
     width: 100%;
     object-fit: cover;
   }
+  .menu-item-rating {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    right: 4px;
+    bottom: 70%;
+  }
   .menu-item-info {
-    padding: 8px;
+    position: relative;
+    bottom: 15%;
+    padding: 0px 8px 8px 8px;
     display: flex;
     p {
       margin-bottom: 4px;
