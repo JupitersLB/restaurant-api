@@ -29,7 +29,7 @@ const OrderItem = (props) => {
 
         </div>
         <div className="col-2">
-          <FontAwesomeIcon icon={faTimesCircle} onClick={handleClick} />
+          { item.status === 'pending' ? <FontAwesomeIcon icon={faTimesCircle} onClick={handleClick} /> : '' }
         </div>
       </div>
       { item.status === 'served' ? <Review item={item} itemRating={item.rating} email={email} token={token} /> : ''}
