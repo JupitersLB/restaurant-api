@@ -8,8 +8,6 @@ const Category = (props) => {
     changeCategory(id);
   }
 
-  console.log('render from category');
-
   const className = activeIndex === id ? 'category-card active' : 'category-card';
   return (
     <div className={className} id={`category-${id}`} onClick={handleClick}>
