@@ -18,6 +18,7 @@ const MenuItem = (props) => {
       icon: "success"
     });
   }
+  console.log('render from menu-item');
 
   const { item, email, token, updateOrder } = props;
   return (

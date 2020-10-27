@@ -78,6 +78,7 @@ class App extends Component {
     const {userEmail, userToken, menu, category, isLoaded, order, items, show} = this.state;
     const table = order.table;
     const total = order.total_price;
+    console.log('render from app');
 
     return (
       <div>
