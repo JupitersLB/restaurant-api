@@ -17,8 +17,6 @@ const Review = (props) => {
     }
   };
 
-  console.log(email);
-
   return (
     <>
       <div className="row">
