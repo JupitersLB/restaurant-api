@@ -93,7 +93,7 @@ class App extends Component {
             <Modal.Body>
               <p> Table : {table} </p>
               <p><b>Items:</b></p>
-              { items.length > 0 ? items.map( (item, idx) => <OrderItem item={item} key={idx} updateOrder={this.updateOrder} />) : ''}
+              { items.length > 0 ? items.map( (item, idx) => <OrderItem item={item} key={idx} email={userEmail} token={userToken} updateOrder={this.updateOrder} />) : ''}
               <p> Total : ¥{total} </p>
             </Modal.Body>
             <Modal.Footer>

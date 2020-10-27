@@ -13,8 +13,7 @@ const OrderItem = (props) => {
   }
 
   const { item, email, token, updateOrder } = props;
-  console.log('render from order-item');
-
+  console.log(email)
   return (
     <div className="order-item-card" id={`order-item-${item.id}`}>
       <div className="row">

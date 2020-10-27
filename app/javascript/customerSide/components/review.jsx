@@ -5,7 +5,7 @@ import { addReview, updateReview } from '../actions/index';
 
 const Review = (props) => {
 
-  const {item, email, token, itemRating} = props;
+  const {item, itemRating, email, token} = props;
   const [rating, setRating] = useState(itemRating);
 
   const ratingChanged = (newRating) => {
@@ -16,7 +16,8 @@ const Review = (props) => {
       updateReview(item.id, email, token, newRating);
     }
   };
-  console.log('render from review');
+
+  console.log(email);
 
   return (
     <>
