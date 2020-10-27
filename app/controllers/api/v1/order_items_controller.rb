@@ -1,5 +1,5 @@
 class Api::V1::OrderItemsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, only: %i[create update]
+  acts_as_token_authentication_handler_for User, only: %i[create cancel]
 
   def create
     user = User.find_by(email: request.headers["X-User-Email"])

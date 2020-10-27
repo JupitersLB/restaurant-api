@@ -2,7 +2,8 @@ class MenuItemsController < ApplicationController
   before_action :set_menu_item, only: [:show, :edit, :update]
 
   def index
-    # @menu_items = MenuItem.all
+    #Handles search if a search has been made
+
     if params[:search].present?
       @menu_items = MenuItem.search_by_name_and_description(params[:search][:query])
     else

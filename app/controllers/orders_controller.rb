@@ -9,7 +9,12 @@ class OrdersController < ApplicationController
   def show
     @order = Order.where(id: params[:id]).includes(:user).first
     base_url = 'https://restaurant-covid-api-app.herokuapp.com/customers/authenticate'
+
+    # Makes qr code for a customer with query strings for future authentication
+
     qrcode = RQRCode::QRCode.new("#{base_url}?user_email=#{@order.user.email}&user_token=#{@order.user.authentication_token}")
+
+    # Changes qr code into a SVG
 
     @svg = qrcode.as_svg(
       offset: 0,
