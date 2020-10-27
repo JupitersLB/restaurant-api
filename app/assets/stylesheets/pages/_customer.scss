@@ -94,6 +94,10 @@
 
 .menu-item-card.active {
   height: fit-content;
+  .menu-item-rating {
+    position: static;
+    padding-right: 4px;
+  }
   .order-button {
     display: block;
   }
