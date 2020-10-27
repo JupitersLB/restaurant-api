@@ -13,6 +13,7 @@ class Api::V1::OrdersController < Api::V1::BaseController
                   .where(order_items: {status: ['pending', 'served']})
                   .includes(:menu_items)
                   .first
+    @order = Order.where(user: user).first if @order.nil?
     authorize @order
   end
 end
