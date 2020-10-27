@@ -25,8 +25,8 @@ const MenuItem = (props) => {
       <img className="menu-item-image" src={item.image_url} alt=""></img>
       <div className="menu-item-info row">
         <div className="menu-item-info-details col-9">
-          <p><b>{item.name}</b></p>
-          <p>{item.description}</p>
+          <p className="header"><b>{item.name}</b></p>
+          <p className="description">{item.description}</p>
         </div>
         <div className="col-3">
           <div className="row">
