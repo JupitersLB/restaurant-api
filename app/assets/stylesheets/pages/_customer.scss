@@ -88,10 +88,17 @@
     display: block;
   }
   .menu-item-info-details {
-      p {
-        overflow: visible;
-        white-space: normal;
-        text-overflow: clip;
-      }
+    p {
+      overflow: visible;
+      white-space: normal;
+      text-overflow: clip;
     }
+  }
+}
+
+.order-item-card {
+  margin-bottom: 16px;
+  p {
+    margin-bottom: 4px;
+  }
 }

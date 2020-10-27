@@ -7,11 +7,12 @@ Rails.application.routes.draw do
       resources :menus, only: :show do
         resources :menu_items, only: :index
       end
-      resources :orders, only: [:index, :show, :update] do
-        resources :order_items, only: :create do
+      resources :orders, only: [:index, :show, :update], shallow: true do
+        resources :order_items, only: :create, shallow: true do
           member do
             patch 'cancel'
           end
+          resources :reviews, only: [:create, :update], shallow: true
         end
       end
     end
