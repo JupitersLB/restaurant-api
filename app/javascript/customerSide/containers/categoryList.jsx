@@ -15,6 +15,10 @@ export default class CategoryList extends Component {
     this.setState({ activeIndex: idx });
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    return nextProps.menu !== this.props.menu || nextState.activeIndex !== this.state.activeIndex;
+  }
+
   render() {
     const { menu, changeCategory }  = this.props;
     const { activeIndex } = this.state;

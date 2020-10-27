@@ -16,6 +16,7 @@ const Review = (props) => {
       updateReview(item.id, email, token, newRating);
     }
   };
+  console.log('render from review');
 
   return (
     <>
