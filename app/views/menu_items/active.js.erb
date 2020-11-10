@@ -1,0 +1,3 @@
+var card = document.getElementById("staff-menu-item-card-<%= @menu_item.id %>");
+card.innerHTML = " <%= escape_javascript(render partial: 'menu_item', locals: { item: @menu_item } ) %> ";
+card.classList.toggle("inactive");

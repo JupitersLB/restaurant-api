@@ -1,5 +1,5 @@
 class MenuItemsController < ApplicationController
-  before_action :set_menu_item, only: [:show, :edit, :update]
+  before_action :set_menu_item, only: [:show, :edit, :update, :active]
 
   def index
     #Handles search if a search has been made
@@ -36,6 +36,15 @@ class MenuItemsController < ApplicationController
       redirect_to menu_item_path(@menu_item)
     else
       render :edit
+    end
+  end
+
+  def active
+    @menu_item.active = !@menu_item.active
+    if @menu_item.save
+      respond_to do |format|
+        format.js
+      end
     end
   end
 

@@ -2,6 +2,15 @@
   border-radius: 8px;
   width: inherit;
   height: 25vh;
+  .menu-item-active-button {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    a {
+      color: black;
+      font-size: 20px;
+    }
+  }
   .menu-item-image {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -29,5 +38,14 @@
   }
   .order-button {
     display: none;
+  }
+}
+
+.staff-menu-item-card.inactive {
+  .menu-item-image {
+    opacity: 0.5;
+  }
+  .menu-item-info {
+    opacity: 0.5;
   }
 }
