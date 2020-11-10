@@ -1,4 +1,4 @@
-<div class="staff-menu-item-card <%= "inactive" unless item.active %> shadow" id="staff-menu-item-card-<%= item.id %>">
+<div class="staff-menu-item-card <%= "inactive" unless item.active %> shadow">
   <%= cl_image_tag item.photo.key, crop: :fill, class: 'menu-item-image' %>
   <div class="menu-item-active-button">
     <% if item.active %>
