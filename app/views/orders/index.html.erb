@@ -3,12 +3,12 @@
 
 <h1 class="pt-3">Customers</h1>
 
-<table class="customer-table">
-  <tr>
-    <th>Table</th>
-    <th>Total Price</th>
-    <th>Number of Items</th>
-    <th>Controls</th>
-  </tr>
+<div class="customer-table">
+  <div class="table-row">
+    <div class="table-header">Table</div>
+    <div class="table-header">Total Price</div>
+    <div class="table-header">Number of Items</div>
+    <div class="table-header">Controls</div>
+  </div>
   <%= render 'orders', orders: @orders %>
-</table>
+</div>

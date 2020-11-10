@@ -38,11 +38,28 @@
 .customer-table {
   margin-top: 32px;
   width: 100%;
-  th {
+  .table-header {
     text-align: center;
+    font-weight: bold;
+    width: 25%;
   }
-  td {
-    text-align: center;
+  .table-row {
+    display: flex;
+    vertical-align: top;
+    height: fit-content;
+    .table-cell {
+      white-space: nowrap;
+      width: 25%;
+      text-align: center;
+      height: fit-content;
+      padding: 4px 4px 4px 4px;
+      p {
+        margin-bottom: 4px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
   }
   .btn > p {
     margin-bottom: 4px;
