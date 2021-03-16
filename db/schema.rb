@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_043846) do
+ActiveRecord::Schema.define(version: 2021_03_16_090944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,15 +36,22 @@ ActiveRecord::Schema.define(version: 2020_11_10_043846) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "menu_items", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "category"
-    t.float "price"
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "menu_items", force: :cascade do |t|
     t.bigint "menu_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "active", default: true
+    t.bigint "item_id", null: false
+    t.index ["item_id"], name: "index_menu_items_on_item_id"
     t.index ["menu_id"], name: "index_menu_items_on_menu_id"
   end
 
@@ -99,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_043846) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "menu_items", "items"
   add_foreign_key "menu_items", "menus"
   add_foreign_key "order_items", "menu_items"
   add_foreign_key "order_items", "orders"

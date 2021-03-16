@@ -1,25 +1,23 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [ :edit, :update]
+  before_action :set_menu, only: [ :edit, :update ]
 
   def index
     @menus = Menu.all
+    @menu = Menu.new()
+    @menu.menu_items.build.build_item
   end
 
   def show
      @menu = Menu.find(params[:id])
   end
 
-  def new
-    @menu = Menu.new()
-  end
-
-
   def create
-    @menu = Menu.new(menu_params)
-    if @menu.save
+    @menu = Menu.create(menu_params)
+    if @menu.id
       redirect_to menus_path
     else
-      render :new
+      flash[:alert] = "Error when saving"
+      render :show
     end
   end
 
@@ -41,6 +39,6 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, :active)
+    params.require(:menu).permit(:name, item_ids: [], menu_items_attributes: [item_attributes: [:name, :description, :category, :price, :photo]])
   end
 end

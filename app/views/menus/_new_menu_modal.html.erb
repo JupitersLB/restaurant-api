@@ -1,0 +1,46 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModalCenter">
+  Add New Menu
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="newMenuModalCenter" tabindex="-1" role="dialog" aria-labelledby="newMenuModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newMenuModalCenterLongTitle">Add a Menu!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @menu do |f| %>
+          <h3 class="pb-3">Menu</h3>
+          <%= f.input :name, placeholder: 'Christmas Special' %>
+          <br>
+          <h3 class="pb-3">Items</h3>
+          <h6 class="pb-3">Choose from existing...</h6>
+          <%= f.collection_check_boxes :item_ids, Item.all, :id, :item_photo, item_wrapper_class: 'my-class' %>
+          <h6 class="pb-3">Or make some new ones...</h6>
+          <div class="menuItemContainer">
+            <%= f.simple_fields_for :menu_items do |mi| %>
+              <menuItem id='0'>
+              <%= mi.simple_fields_for :item do |i| %>
+                <%= i.input :name %>
+                <%= i.input :description %>
+                <%= i.input :category %>
+                <%= i.input :price %>
+                <%= i.input :photo, as: :file %>
+              <% end %>
+              </menuItem>
+            <% end %>
+          </div>
+          <div class="new-ingr-btn text-primary" id="addItemBtn">
+            Add Another Item
+          </div>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

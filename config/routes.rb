@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :menus, only: [ :show, :index ] do
+  resources :menus, only: [ :show, :create, :index ] do
     resources :menu_items, only: :create, shallow: true do
       member do
         patch 'active'
