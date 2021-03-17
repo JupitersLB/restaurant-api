@@ -28,6 +28,8 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { initSelect2 } from '../components/init_select2';
+import { addMenuItem } from '../components/addItem';
+
 import "../customerSide";
 import { initOrderItemCable } from '../channels/order_item_channel';
 
@@ -36,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   initOrderItemCable();
   // Call your functions here, e.g:
   initSelect2();
+  if (document.querySelector(".menuItemContainer")) addMenuItem();
 });
