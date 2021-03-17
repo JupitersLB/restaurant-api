@@ -1,7 +1,17 @@
-<h1> Menus </h1>
 <%= render 'new_menu_modal' %>
-
-<% @menus.each do |menu| %>
-  <h3> <%= menu.name %> </h3>
-  <p> <%= menu.active %> </p>
-<% end %>
+<div class="menus text-center row">
+  <% @menus.each do |menu| %>
+    <div class="menu col-4 p-3">
+      <h3><b><%= menu.name %></b></h3>
+      <p> <%= menu.active %> </p>
+      <div class="items">
+        <% menu.items.each do |item| %>
+          <div class="item text-center row">
+            <p class="pr-3 col"><b><%= item.name %></b></p>
+            <p class="col">¥<%= item.price %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

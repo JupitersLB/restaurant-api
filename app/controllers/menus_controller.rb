@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :set_menu, only: [ :edit, :update ]
 
   def index
-    @menus = Menu.all
+    @menus = Menu.includes(:items)
     @menu = Menu.new()
     @menu.menu_items.build.build_item
   end

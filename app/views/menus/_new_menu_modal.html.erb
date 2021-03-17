@@ -1,11 +1,14 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModalCenter">
-  Add New Menu
-</button>
+<div class="row justify-content-between">
+  <h1> Menus </h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newMenuModalCenter">
+    Add New Menu
+  </button>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="newMenuModalCenter" tabindex="-1" role="dialog" aria-labelledby="newMenuModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="newMenuModalCenterLongTitle">Add a Menu!</h5>
@@ -17,28 +20,44 @@
         <%= simple_form_for @menu do |f| %>
           <h3 class="pb-3">Menu</h3>
           <%= f.input :name, placeholder: 'Christmas Special' %>
-          <br>
+          <hr>
           <h3 class="pb-3">Items</h3>
           <h6 class="pb-3">Choose from existing...</h6>
-          <%= f.collection_check_boxes :item_ids, Item.all, :id, :item_photo, item_wrapper_class: 'my-class' %>
+          <div class="my-grid row text-left">
+            <!-- <div class="row justify-content-center"> -->
+              <%= f.collection_check_boxes :item_ids, Item.all, :id, :item_photo, item_wrapper_class: 'my-class col-2' %>
+            <!-- </div> -->
+
+          </div>
+          <hr>
           <h6 class="pb-3">Or make some new ones...</h6>
           <div class="menuItemContainer">
             <%= f.simple_fields_for :menu_items do |mi| %>
               <menuItem id='0'>
               <%= mi.simple_fields_for :item do |i| %>
-                <%= i.input :name %>
-                <%= i.input :description %>
-                <%= i.input :category %>
-                <%= i.input :price %>
-                <%= i.input :photo, as: :file %>
+                <item id="0">
+                  <div class="row justify-content-around">
+                    <%= i.input :name, wrapper_html: {class: 'col-5 mb-2'} %>
+                    <%= i.input :description, wrapper_html: {class: 'col-5 mb-2'} %>
+                  </div>
+                  <div class="row justify-content-around">
+                    <%= i.input :category, wrapper_html: {class: 'col-5 mb-2'} %>
+                    <%= i.input :price, wrapper_html: {class: 'col-5 mb-2'} %>
+                  </div>
+                  <%= i.input :photo, as: :file %>
+                </item>
               <% end %>
               </menuItem>
             <% end %>
           </div>
-          <div class="new-ingr-btn text-primary" id="addItemBtn">
-            Add Another Item
+          <div class="row justify-content-between">
+            <div class="new-ingr-btn col-4 text-primary" id="addItemBtn">
+              Add Another Item
+            </div>
+            <div class="col-2">
+              <%= f.submit 'Add Menu!', class: 'btn btn-primary' %>
+            </div>
           </div>
-          <%= f.submit %>
         <% end %>
       </div>
     </div>
