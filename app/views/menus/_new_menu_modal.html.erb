@@ -24,17 +24,19 @@
           <h3 class="pb-3">Items</h3>
           <h6 class="pb-3">Choose from existing...</h6>
           <div class="my-grid row text-left">
-            <!-- <div class="row justify-content-center"> -->
-              <%= f.collection_check_boxes :item_ids, Item.all, :id, :item_photo, item_wrapper_class: 'my-class col-2' %>
-            <!-- </div> -->
-
+            <%# creates a a collection of existing items with checkboxes to select from and goes to params as 'item_ids'  %>
+            <%= f.collection_check_boxes :item_ids, Item.all, :id, :item_photo, item_wrapper_class: 'my-class col-2' %>
           </div>
           <hr>
           <h6 class="pb-3">Or make some new ones...</h6>
           <div class="menuItemContainer">
+            <%# creates an empty field for MenuItem which uses the item id of the item generated below  %>
             <%= f.simple_fields_for :menu_items do |mi| %>
+              <%# html used for selecting in JS  %>
               <menuItem id='0'>
+              <%# creates the fields for the item as a nested attribute %>
               <%= mi.simple_fields_for :item do |i| %>
+                <%# html used for selecting in JS  %>
                 <item id="0">
                   <div class="row justify-content-around">
                     <%= i.input :name, wrapper_html: {class: 'col-5 mb-2'} %>
